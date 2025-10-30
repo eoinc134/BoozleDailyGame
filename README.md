@@ -1,2 +1,2 @@
 # boozle-backend
-Backend Application for Boozle Game
+Backend Application for Boozle Daily Guessing Game
