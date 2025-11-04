@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -15,26 +9,26 @@ datasource db {
 }
 
 model DailyCocktail {
-  id           Int      @id @default(autoincrement())
-  date         DateTime @unique
+  id           Int      @id @unique(map: "id") @default(autoincrement())
+  date         DateTime @unique(map: "date") @db.Date
   cocktailData String
-  guesses      Guess[]
   clues        Clue[]
+  guesses      Guess[]
 }
 
 model Clue {
-  clueId        Int           @id @default(autoincrement())
+  clueId        String         @id @unique(map: "clueId") @db.Uuid
   sessionId     String
-  revealedAt    DateTime      @default(now())
-  cocktailId    Int
-  dailyCocktail DailyCocktail @relation(fields: [cocktailId], references: [id])
+  revealedAt    DateTime       @db.Time(6)
+  cocktailId    Int?
+  dailyCocktail DailyCocktail? @relation(fields: [cocktailId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cocktailId")
 }
 
 model Guess {
-  guessId       Int           @id @default(autoincrement())
+  guessId       String        @id @db.Uuid
   sessionId     String
   guess         String
   isCorrect     Boolean
   cocktailId    Int
-  dailyCocktail DailyCocktail @relation(fields: [cocktailId], references: [id])
+  dailyCocktail DailyCocktail @relation(fields: [cocktailId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "cocktailId")
 }
