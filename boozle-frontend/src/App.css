@@ -1,8 +1,13 @@
-#root {
+#root-content {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.header {
+  margin-left: -2rem;
+  margin-right: -2rem;
 }
 
 .logo {

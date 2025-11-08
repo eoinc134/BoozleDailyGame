@@ -1,17 +1,23 @@
 import { Router }   from 'express';
-import { PrismaClient } from '../generated/prisma/index.js';
+import { prisma  } from '../prisma/client.ts'
 
-const prisma = new PrismaClient();
 const router = Router();
 
 router.get('/', async (req, res) => {
     try {
         const today = new Date();
-        today.setHours(0, 0, 0, 0); // Normalize to midnight
+        today.setHours(0, 0, 0, 0);
+
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
 
         // Fetch the daily cocktail for today
         const cocktail = await prisma.dailyCocktail.findFirst({
-            where: { date: today },
+            where: { date: {
+                gte: today,
+                lt: tomorrow,
+                }, 
+            },
         });
 
         if (!cocktail) {
@@ -43,9 +49,6 @@ router.post('/fetch', async (req, res) => {
         const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
         const data = await response.json();
         const cocktailData = data.drinks[0];
-        console.log('Fetched cocktail data:', cocktailData);
-
-        //TODO: Format name, ingredients and imageUrl etc.
 
         // Save to DB
         const newCocktail = await prisma.dailyCocktail.create({
