@@ -1,0 +1,41 @@
+.hint-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.hint-buttons button {
+    height: 3.5rem;
+    width: 3.5rem;
+    min-width: 0;   
+    padding: 0;
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+
+.used-button.MuiButton-outlined.Mui-disabled {
+    background-color: #fffffe;
+    color: black;
+}
+
+.current-button.MuiButton-outlined {
+  background-color: #303235;
+  color: white;
+  border: none;
+}
+
+.disabled-button.MuiButton-outlined.Mui-disabled {
+  background-color: #ada7a7;
+  color: rgb(184, 176, 176);
+}
+
+.hint-buttons .MuiButton-startIcon {
+    margin: 0;
+}

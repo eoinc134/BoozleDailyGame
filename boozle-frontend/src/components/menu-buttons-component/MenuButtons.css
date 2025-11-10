@@ -1,0 +1,36 @@
+.menu-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.menu-buttons button {
+    height: 3.5rem;
+    width: 3.5rem;
+    min-width: 0;   
+    padding: 0;
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.secondary-button.MuiButton-outlined {
+  background-color: #303235;
+  color: white;
+  border: none;
+}
+
+.primary-button.MuiButton-contained {
+  background-color: #fffffe;
+  color: black;
+}
+
+
+.menu-buttons .MuiButton-startIcon {
+    margin: 0;
+}

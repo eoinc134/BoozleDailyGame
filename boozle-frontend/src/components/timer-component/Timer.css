@@ -1,0 +1,14 @@
+.timer {
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    align-items: center;
+
+    color: #000000;
+    background-color: #D9D9D9;
+    width: fit-content;
+    padding: 0.5rem 3rem;
+    border-radius: 999px
+}
