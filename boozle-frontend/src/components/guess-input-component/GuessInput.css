@@ -1,0 +1,38 @@
+.guess-input-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.guess-input .MuiAutocomplete-root {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+.guess-input .MuiOutlinedInput-root {
+    background-color: #fffffe;
+    width: 25rem;
+}
+
+.guess-input label.Mui-focused {
+    color: #303235;
+}
+
+.guess-input .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: #303235;
+}
+
+.guess-input-label {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.submit-guess-button.MuiButton-contained {
+  background-color: #303235;
+  color: white;
+  border: none;
+  
+}

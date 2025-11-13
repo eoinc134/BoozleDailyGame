@@ -17,3 +17,23 @@ export async function fetchNewDailyCocktail() {
     }
     return response.json();
 }
+
+export async function searchCocktails(query: string) {
+    if(!query) {
+        return [];
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/search-cocktails?q=${encodeURIComponent(query)}`);
+        if (!response.ok) {
+            throw new Error('Failed to search cocktails');
+        }
+
+        const data = await response.json();
+        return Array.isArray(data) ? data : [];
+    } catch {
+        console.error('Error searching cocktails');
+        return [];
+    }
+}
+

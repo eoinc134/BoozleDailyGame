@@ -12,6 +12,11 @@ const GamePage: React.FC = () => {
     //  eslint-disable-next-line @typescript-eslint/no-explicit-any
       const [cocktail, setCocktail] = useState<any>(null);
       const [error] = useState<string | null>(null);
+
+      const handleGuessSubmit = (guess: string) => {
+        console.log('User guessed:', guess);
+        // Placeholder for handling the submitted guess
+      }
     
       useEffect(() => {
         fetchDailyCocktail()
@@ -39,7 +44,7 @@ const GamePage: React.FC = () => {
       return (
         <div>
           <HintButtons />
-          <GuessInput />
+          <GuessInput onGuessSubmit={handleGuessSubmit} />
           <h1>Today's Cocktail: {parsedCocktail.name}</h1>
         </div>
       )

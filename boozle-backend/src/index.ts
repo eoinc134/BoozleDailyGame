@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { PrismaClient } from './generated/prisma/index.js';
 import dailyCocktailRoutes from './routes/dailyCocktail.ts';
+import searchCocktailsRoutes from './routes/searchCocktails.ts';
 
 // ----- Initialize App -----
 const app = express();
@@ -13,7 +14,9 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 app.use(express.json());
+
 app.use('/daily-cocktail', dailyCocktailRoutes);
+app.use('/search-cocktails', searchCocktailsRoutes);
 
 // ----- Start Server -----
 app.listen(3000, () => {
