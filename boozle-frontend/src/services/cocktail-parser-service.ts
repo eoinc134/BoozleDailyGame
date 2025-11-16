@@ -1,7 +1,7 @@
-import type { DailyCocktail } from "../models/cocktail";
+import type { Cocktail } from "../models/cocktail";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function parseCocktailData(cocktailData: any): DailyCocktail {
+export function parseCocktailData(cocktailData: any): Cocktail {
     const data = JSON.parse(cocktailData);
 
     // Parse ingredients and measures

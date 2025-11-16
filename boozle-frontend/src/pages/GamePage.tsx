@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from "react";
 
 // Services
-import { fetchDailyCocktail, fetchNewDailyCocktail } from "../services/api-service";
+import { fetchDailyCocktail, fetchNewDailyCocktail, searchCocktailByName } from "../services/api-service";
 import { parseCocktailData } from "../services/cocktail-parser-service";
 
 // Components
 import HintButtons from "../components/hint-buttons-component/HintButtons";
 import GuessInput from "../components/guess-input-component/GuessInput";
+import GuessComparison from "../components/guess-comparison-component/GuessComparison";
+import type { Cocktail } from "../models/cocktail";
 
 const GamePage: React.FC = () => {
     //  eslint-disable-next-line @typescript-eslint/no-explicit-any
       const [cocktail, setCocktail] = useState<any>(null);
       const [error] = useState<string | null>(null);
-
-      const handleGuessSubmit = (guess: string) => {
-        console.log('User guessed:', guess);
-        // Placeholder for handling the submitted guess
-      }
+      const [guess, setGuess] = useState<Cocktail>();
     
+
+      const handleGuessSubmit = async (guess: string) => {
+        // Fetch and set the guess for comparison
+        const cocktailData = await searchCocktailByName(guess);
+        console.log("Guessed Cocktail: ", cocktailData[0])
+        const parsedData = parseCocktailData(JSON.stringify(cocktailData[0]));
+        console.log('Parsed guessed cocktail data:', parsedData);
+
+        setGuess(parsedData);
+      }
+
+
       useEffect(() => {
         fetchDailyCocktail()
         .then(setCocktail)
@@ -44,8 +54,9 @@ const GamePage: React.FC = () => {
       return (
         <div>
           <HintButtons />
-          <GuessInput onGuessSubmit={handleGuessSubmit} />
-          <h1>Today's Cocktail: {parsedCocktail.name}</h1>
+          <GuessInput onGuessSubmit={(value) => handleGuessSubmit(value)} />
+
+          <GuessComparison guess={guess}/>
         </div>
       )
 }

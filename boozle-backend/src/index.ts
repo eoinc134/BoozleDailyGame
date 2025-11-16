@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { PrismaClient } from './generated/prisma/index.js';
 import dailyCocktailRoutes from './routes/dailyCocktail.ts';
-import searchCocktailsRoutes from './routes/searchCocktails.ts';
+import searchCocktailsRoutes from './routes/searchAllCocktails.ts';
 
 // ----- Initialize App -----
 const app = express();

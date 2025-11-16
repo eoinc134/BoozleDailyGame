@@ -1,5 +1,5 @@
 import { Autocomplete, Button, TextField } from "@mui/material";
-import { searchCocktails } from "../../services/api-service";
+import { searchAllCocktails } from "../../services/api-service";
 import './GuessInput.css';
 import React from "react";
 
@@ -21,7 +21,7 @@ const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit }) => {
         }
 
         try {
-            const results = await searchCocktails(value);
+            const results = await searchAllCocktails(value);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const names = results.map((cocktail: any) => cocktail.strDrink);
             setCocktailOptions(names);
