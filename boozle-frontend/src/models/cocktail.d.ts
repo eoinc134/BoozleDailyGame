@@ -2,12 +2,9 @@ export interface Cocktail {
     id: string;
     name: string;
     categories: string[];
-    isAlcoholic: boolean;
+    isAlcoholic: string;
     glassType: string;
     instructions: string;
-    ingredients: {
-        name: string;
-        measure: string;
-    }[];
+    ingredients: string[]
     imageUrl: string;
 }

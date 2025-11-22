@@ -5,7 +5,11 @@ import './Header.css';
 import MenuButtons from "../menu-buttons-component/MenuButtons";
 import Timer from "../timer-component/Timer";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+    gameComplete: boolean
+}
+
+const Header: React.FC<HeaderProps> = ({gameComplete}) => {
     return (
         <header className="header"> 
             <div className="title-section">
@@ -15,7 +19,8 @@ const Header: React.FC = () => {
                 </div>
             </div>
             <div className="timer-section">
-                <Timer />
+                {/* <h2>Timer:</h2> */}
+                <Timer gameComplete={gameComplete} />
             </div>
             <div className="button-container">
                 <MenuButtons />

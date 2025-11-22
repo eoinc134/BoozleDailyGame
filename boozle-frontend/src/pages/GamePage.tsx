@@ -5,28 +5,40 @@ import { fetchDailyCocktail, fetchNewDailyCocktail, searchCocktailByName } from 
 import { parseCocktailData } from "../services/cocktail-parser-service";
 
 // Components
-import HintButtons from "../components/hint-buttons-component/HintButtons";
 import GuessInput from "../components/guess-input-component/GuessInput";
 import GuessComparison from "../components/guess-comparison-component/GuessComparison";
 import type { Cocktail } from "../models/cocktail";
+import ClueCard from "../components/clue-card-component/ClueCard";
 
-const GamePage: React.FC = () => {
+//Props
+interface GamePageProps {
+  onGameComplete: (gameComplete: boolean) => void;
+}
+
+const GamePage: React.FC<GamePageProps> = ({onGameComplete}) => {
     //  eslint-disable-next-line @typescript-eslint/no-explicit-any
       const [cocktail, setCocktail] = useState<any>(null);
       const [error] = useState<string | null>(null);
       const [guess, setGuess] = useState<Cocktail>();
+      const [hints, setHints] = useState<number>(0);
+      const [gameComplete, setComplete] = useState<boolean>(false);
     
 
       const handleGuessSubmit = async (guess: string) => {
+        
+        setComplete(guess === parsedCocktail.name);
+        onGameComplete(gameComplete);
+
         // Fetch and set the guess for comparison
         const cocktailData = await searchCocktailByName(guess);
-        console.log("Guessed Cocktail: ", cocktailData[0])
         const parsedData = parseCocktailData(JSON.stringify(cocktailData[0]));
-        console.log('Parsed guessed cocktail data:', parsedData);
 
         setGuess(parsedData);
       }
-
+      
+      const handleHintUsed = (hints: number) => {
+        setHints(hints);
+      }
 
       useEffect(() => {
         fetchDailyCocktail()
@@ -48,15 +60,15 @@ const GamePage: React.FC = () => {
     
       // Parse cocktail data
       const parsedCocktail = parseCocktailData(cocktail.cocktailData);
-      console.log('Cocktail data:', parsedCocktail);
     
       // Render cocktail details
       return (
         <div>
-          <HintButtons />
-          <GuessInput onGuessSubmit={(value) => handleGuessSubmit(value)} />
+          <GuessInput onGuessSubmit={(value) => handleGuessSubmit(value)} onHintSubmit={(value) => handleHintUsed(value)} gameComplete={gameComplete} />
 
-          <GuessComparison guess={guess}/>
+          <ClueCard dailyCocktail={parsedCocktail} hintsUsed={hints} gameComplete={gameComplete} ></ClueCard>
+
+          <GuessComparison dailyCocktail={parsedCocktail} guess={guess}/>
         </div>
       )
 }

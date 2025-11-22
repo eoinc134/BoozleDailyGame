@@ -51,6 +51,8 @@
     text-align: center;    
     align-items: center;
     font-size: 1.25rem;
+    display: flex;
+    gap: 2rem;
 }
 .button-container {
     padding-right: 2rem;
