@@ -3,13 +3,8 @@ import './Header.css';
 
 // Components
 import MenuButtons from "../menu-buttons-component/MenuButtons";
-import Timer from "../timer-component/Timer";
 
-interface HeaderProps {
-    gameComplete: boolean
-}
-
-const Header: React.FC<HeaderProps> = ({gameComplete}) => {
+const Header: React.FC = () => {
     return (
         <header className="header"> 
             <div className="title-section">
@@ -17,10 +12,6 @@ const Header: React.FC<HeaderProps> = ({gameComplete}) => {
                 <div className="logo">
                     <img src="src/assets/boozle-logo.svg" alt="Boozle logo" width="30" />
                 </div>
-            </div>
-            <div className="timer-section">
-                {/* <h2>Timer:</h2> */}
-                <Timer gameComplete={gameComplete} />
             </div>
             <div className="button-container">
                 <MenuButtons />

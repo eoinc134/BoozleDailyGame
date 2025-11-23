@@ -16,10 +16,16 @@ const GuessComparison: React.FC<GuessComparisonProps> = ({dailyCocktail, guess})
     useEffect(() => {
         if (!guess) return;
 
-        const newRow = evaluateGuess(dailyCocktail, guess)
+        const newRow = evaluateGuess(dailyCocktail, guess);
+        
+        // Ensure no duplicates
+        const alreadyExists = rows.some(
+            (row) => row.cocktailName.value === newRow.cocktailName.value
+        )
+        if(alreadyExists) return;
         
         setRows((prevRows) => [newRow, ...prevRows]);
-    }, [dailyCocktail, guess]);
+    }, [dailyCocktail, guess, rows]);
        
 
     return ( 

@@ -2,9 +2,6 @@ import type { Cocktail } from "../models/cocktail";
 import type { GuessRow } from "../models/guessRow";
 
 export function evaluateGuess(dailyCocktail: Cocktail, guessedCocktail: Cocktail): GuessRow {
-    console.log("Daily Cocktail: ", dailyCocktail);
-    console.log("Guessed Cocktail: ", guessedCocktail)
-
     const evaluatedRow: GuessRow = {
         cocktailName: {
             value: guessedCocktail.name,
@@ -18,7 +15,7 @@ export function evaluateGuess(dailyCocktail: Cocktail, guessedCocktail: Cocktail
         },
         glass: {
             value: guessedCocktail.glassType,
-            isCorrect: guessedCocktail.glassType === dailyCocktail.glassType
+            isCorrect: guessedCocktail.glassType.toLowerCase() === dailyCocktail.glassType.toLowerCase()
         }
     }
 

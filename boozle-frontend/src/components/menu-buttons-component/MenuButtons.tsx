@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
 import StarIcon from '@mui/icons-material/StarOutline';
 import LoginIcon from '@mui/icons-material/Login';
-import GameInfoModal from '../GameInfoModal/GameInfoModal';
+import GameInfoModal from '../game-info-modal/GameInfoModal';
 
 const MenuButtons: React.FC = () => {
     // Info Modal
