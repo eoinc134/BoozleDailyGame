@@ -20,12 +20,12 @@ app.use('/search-cocktails', searchCocktailsRoutes);
 
 // ----- Serve Frontend in Production -----
 const __dirname = path.resolve();
-const frontendBuildPath = path.join(__dirname, '..', 'boozle-frontend', 'dist');
-app.use(express.static(frontendBuildPath));
+const frontendPath = path.join(__dirname, '..', 'boozle-frontend', 'dist');
+app.use(express.static(frontendPath));
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(frontendBuildPath, 'index.html'));
-});
+app.get(/^(?!\/(daily-cocktail|search-cocktails)).*$/, (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+})
 
 // ----- Start Server -----
 app.listen(PORT, () => {
