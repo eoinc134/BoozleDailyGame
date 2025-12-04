@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { PrismaClient } from './generated/prisma/index.js';
-import dailyCocktailRoutes from './routes/dailyCocktail.ts';
-import searchCocktailsRoutes from './routes/searchAllCocktails.ts';
+import dailyCocktailRoutes from './routes/dailyCocktail';
+import searchCocktailsRoutes from './routes/searchAllCocktails';
 
 // ----- Initialize App -----
 const app = express();
@@ -19,6 +19,7 @@ app.use('/daily-cocktail', dailyCocktailRoutes);
 app.use('/search-cocktails', searchCocktailsRoutes);
 
 // ----- Start Server -----
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
     console.log('Server is running on port 3000');
 });

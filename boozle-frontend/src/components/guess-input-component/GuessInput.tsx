@@ -54,7 +54,6 @@ const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit, onHintSubmit, ga
 
     const handleHint = () => {
         setHintsUsed(prev => prev + 1);
-        console.log("Updating Hints: ", hintsUsed)
         onHintSubmit(hintsUsed + 1)
     }
 
