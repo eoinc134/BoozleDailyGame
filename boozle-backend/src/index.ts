@@ -6,7 +6,7 @@ import path from 'path';
 
 // ----- Initialize App -----
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // ----- Middleware -----
 app.use(cors({
@@ -20,7 +20,7 @@ app.use('/search-cocktails', searchCocktailsRoutes);
 
 // ----- Serve Frontend in Production -----
 const __dirname = path.resolve();
-const frontendPath = path.join(__dirname, '..', 'boozle-frontend', 'dist');
+const frontendPath = path.resolve(__dirname, '../boozle-frontend/dist');
 app.use(express.static(frontendPath));
 
 app.get(/^(?!\/(daily-cocktail|search-cocktails)).*$/, (req, res) => {
