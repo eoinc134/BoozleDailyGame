@@ -19,8 +19,7 @@
 
     // Other Outputs
     "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
@@ -32,7 +31,7 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "allowJs": true  
+    "allowJs": true
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "src/generated/prisma"]

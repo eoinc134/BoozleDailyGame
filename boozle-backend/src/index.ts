@@ -1,12 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import { PrismaClient } from './generated/prisma/index.js';
 import dailyCocktailRoutes from './routes/dailyCocktail';
 import searchCocktailsRoutes from './routes/searchAllCocktails';
 
 // ----- Initialize App -----
 const app = express();
-const prisma = new PrismaClient()
 
 // ----- Middleware -----
 app.use(cors({
