@@ -5,6 +5,7 @@ import searchCocktailsRoutes from './routes/searchAllCocktails.js';
 
 // ----- Initialize App -----
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // ----- Middleware -----
 app.use(cors({
@@ -17,7 +18,6 @@ app.use('/daily-cocktail', dailyCocktailRoutes);
 app.use('/search-cocktails', searchCocktailsRoutes);
 
 // ----- Start Server -----
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log('Server is running on port 3000');
+    console.log('Server is running on port', PORT);
 });
