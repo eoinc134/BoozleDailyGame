@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import dailyCocktailRoutes from './routes/dailyCocktail';
-import searchCocktailsRoutes from './routes/searchAllCocktails';
+import dailyCocktailRoutes from './routes/dailyCocktail.js';
+import searchCocktailsRoutes from './routes/searchAllCocktails.js';
 
 // ----- Initialize App -----
 const app = express();
