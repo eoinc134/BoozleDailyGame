@@ -23,7 +23,7 @@ const __dirname = path.resolve();
 const frontendBuildPath = path.join(__dirname, '..', 'boozle-frontend', 'dist');
 app.use(express.static(frontendBuildPath));
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(frontendBuildPath, 'index.html'));
 });
 
