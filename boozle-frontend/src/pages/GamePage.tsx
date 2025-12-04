@@ -10,12 +10,7 @@ import GuessComparison from "../components/guess-comparison-component/GuessCompa
 import type { Cocktail } from "../models/cocktail";
 import ClueCard from "../components/clue-card-component/ClueCard";
 
-//Props
-interface GamePageProps {
-  onGameComplete: (gameComplete: boolean) => void;
-}
-
-const GamePage: React.FC<GamePageProps> = ({onGameComplete}) => {
+const GamePage: React.FC = () => {
     //  eslint-disable-next-line @typescript-eslint/no-explicit-any
       const [cocktail, setCocktail] = useState<any>(null);
       const [error] = useState<string | null>(null);
@@ -27,7 +22,6 @@ const GamePage: React.FC<GamePageProps> = ({onGameComplete}) => {
       const handleGuessSubmit = async (guess: string) => {
         
         setComplete(guess === parsedCocktail.name);
-        onGameComplete(gameComplete);
 
         // Fetch and set the guess for comparison
         const cocktailData = await searchCocktailByName(guess);
