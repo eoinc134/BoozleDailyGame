@@ -9,7 +9,7 @@
     "start": "node boozle-backend/dist/index.js",
     "prisma:generate": "prisma generate --schema=boozle-backend/prisma/schema.prisma",
     "prisma:migrate": "prisma migrate dev --name init",
-    "copy:prisma": "xcopy boozle-backend/src/generated dist/generated"
+    "copy:prisma": "cp -R boozle-backend/src/generated dist/generated"
   },
   "repository": {
     "type": "git",
