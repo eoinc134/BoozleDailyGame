@@ -20,7 +20,7 @@ app.use('/search-cocktails', searchCocktailsRoutes);
 
 // ----- Serve Frontend in Production -----
 const __dirname = path.resolve();
-const frontendPath = path.resolve(__dirname, '../boozle-frontend/dist');
+const frontendPath = path.resolve(__dirname, '../../boozle-frontend/dist');
 app.use(express.static(frontendPath));
 
 app.get(/^(?!\/(daily-cocktail|search-cocktails)).*$/, (req, res) => {
