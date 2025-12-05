@@ -22,15 +22,24 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         run: npm ci
 
-      - name: Build Frontend
+      - name: Build Backend
+        run: npm run build
+
+      - name: Instal Frontend dependencies
         run: |
           cd boozle-frontend
           npm install
           npm run build
           cd ..
 
-      - name: Build Backend
-        run: npm run build
+      - name: Run Backend tests
+        run: npm test --  --coverage
+
+      - name: Run Frontend tests
+        run: |
+          cd boozle-frontend
+          npm test -- --coverage
+          cd ..
