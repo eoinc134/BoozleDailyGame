@@ -10,10 +10,8 @@ export default {
   ],
   coverageDirectory: 'boozle-backend/coverage',
   modulePathIgnorePatterns: ['<rootDir>/boozle-backend/dist/'],
-  globals: {
-    'ts-jest': {
-      useESM: true
-    }
+  transform: {
+    '^.+\\.tsx?$': ['ts-jest', { useESM: true }]
   },
   transformIgnorePatterns: ['node_modules/']
 };
