@@ -5,7 +5,7 @@ export default {
   roots: ['<rootDir>/boozle-backend/src'],
   collectCoverage: true,
   collectCoverageFrom: [
-    'boozle-backend/src/**/*.{ts,tsx}',
+    'boozle-backend/src/**/*.{ts}',
     '!boozle-backend/src/**/*.d.ts'
   ],
   coverageDirectory: 'boozle-backend/coverage',
