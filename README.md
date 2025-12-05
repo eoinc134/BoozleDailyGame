@@ -24,7 +24,7 @@
 * Version control via Git and GitHub
 
 ###### Testing & Quality
-* Playwright & Jest for automated frontend and backend testing
+* Playwright, Vitest & Jest for automated frontend and backend testing
 * SonarQube for code quality monitoring
 
 ### Features
