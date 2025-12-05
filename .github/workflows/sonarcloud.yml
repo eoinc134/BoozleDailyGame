@@ -23,11 +23,7 @@ jobs:
           node-version: '24'
 
       - name: Install Backend dependencies
-        run: |
-          npm ci
-          cd boozle-backend
-          npm ci
-          cd ..
+        run: npm ci
 
       - name: Build Backend
         run: npm run build
