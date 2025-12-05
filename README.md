@@ -1,4 +1,39 @@
 # 🍸 Boozle
 
-**Boozle** is a daily cocktail guessing game inspired by Wordle — but with a boozy twist.  
-Each day, a new cocktail is chosen. Your goal? Guess which one it is using clues like its name, ingredients, glass type, and more.
+**Boozle** is a Wordle-style daily cocktail guessing game built for continuous professional development. It showcases full-stack development skills, including frontend, backend, database design, automated testing, and deployment. Players guess the daily cocktail based on visual and textual clues, combining fun with learning modern web development practices.
+
+### Tech Stack
+###### Frontend
+* React + TypeScript + Vite
+* ESLint & Prettier for code formatting
+* Responsive design for desktop and mobile
+
+###### Backend
+* Node.js + Express
+* PostgreSQL with Prisma ORM
+* RESTful APIs for game logic and third-party cocktail API integration
+
+##### Design & Planning
+* Figma for UI/UX design
+* Data Flow Diagrams (DFD)
+* Entity-Relationship Diagrams (ERD)
+* Lucidchart for system architecture
+
+###### Deployment & DevOps
+* Railway for hosting and continuous deployment
+* Version control via Git and GitHub
+
+###### Testing & Quality
+* Playwright & Jest for automated frontend and backend testing
+* SonarQube for code quality monitoring
+
+### Features
+* Daily cocktail guessing game inspired by Wordle
+* Responsive and interactive frontend built with React + TypeScript
+* RESTful API backend managing user guesses, cocktail data, and scoring
+* Integration with third-party cocktail API to fetch real cocktail data dynamically
+* Full-stack architecture including database schema, ORM, and deployment
+* Automated testing and code quality tools for maintainable, production-ready code
+
+### Future Improvements
+* Leaderboard and user accounts
