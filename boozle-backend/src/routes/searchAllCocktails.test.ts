@@ -25,13 +25,13 @@ describe('Cocktail Router', () => {
     const mockDrinks = [{ idDrink: '123', strDrink: 'Mojito' }];
 
     // Mock global fetch
-    global.fetch = jest.fn().mockResolvedValue({
+    globalThis.fetch = jest.fn().mockResolvedValue({
       json: jest.fn().mockResolvedValue({ drinks: mockDrinks }),
     } as any);
 
     const response = await request(app).get('/cocktails?q=mojito');
 
-    expect(global.fetch).toHaveBeenCalledWith(
+    expect(globalThis.fetch).toHaveBeenCalledWith(
       'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito'
     );
     expect(response.status).toBe(200);
@@ -39,7 +39,7 @@ describe('Cocktail Router', () => {
   });
 
   it('returns empty array if API returns no drinks', async () => {
-    global.fetch = jest.fn().mockResolvedValue({
+    globalThis.fetch = jest.fn().mockResolvedValue({
       json: jest.fn().mockResolvedValue({ drinks: null }),
     } as any);
 
@@ -50,7 +50,7 @@ describe('Cocktail Router', () => {
   });
 
   it('returns 500 if fetch throws an error', async () => {
-    global.fetch = jest.fn().mockRejectedValue(new Error('Network error'));
+    globalThis.fetch = jest.fn().mockRejectedValue(new Error('Network error'));
 
     const response = await request(app).get('/cocktails?q=mojito');
 
