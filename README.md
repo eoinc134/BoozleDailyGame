@@ -14,7 +14,7 @@
 * RESTful APIs for game logic and third-party cocktail API integration
 
 ##### Design & Planning
-* Figma for UI/UX design
+* Figma for UI/UX design(https://www.figma.com/design/8uUQI1Fv1JQ84igztlOIKM/Boozle?node-id=0-1&p=f&t=HormW9MVtCdlBOh9-0)
 * Data Flow Diagrams (DFD)
 * Entity-Relationship Diagrams (ERD)
 * Lucidchart for system architecture
