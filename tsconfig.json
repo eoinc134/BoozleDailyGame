@@ -2,8 +2,8 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    "rootDir": "src",
-    "outDir": "dist",
+    "rootDir": "./boozle-backend/src",
+    "outDir": "./boozle-backend/dist",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
@@ -34,6 +34,6 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "./src/generated/prisma"]
+  "include": ["./boozle-backend/src/**/*"],
+  "exclude": ["node_modules", "./boozle-backend/node_modules", "./boozle-backend/src/generated/prisma"]
 }
