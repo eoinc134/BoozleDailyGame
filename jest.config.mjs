@@ -8,7 +8,7 @@ export default {
     'boozle-backend/src/**/*.{ts}',
     '!boozle-backend/src/**/*.d.ts'
   ],
-  coverageDirectory: 'boozle-backend/coverage',
+  coverageDirectory: '<rootDir>/boozle-backend/coverage',
   modulePathIgnorePatterns: ['<rootDir>/boozle-backend/dist/'],
   transform: {
     '^.+\\.tsx?$': ['ts-jest', { useESM: true }]
