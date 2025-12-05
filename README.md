@@ -37,3 +37,4 @@
 
 ### Future Improvements
 * Leaderboard and user accounts
+* Mobile Compatible
