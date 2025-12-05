@@ -1,6 +1,6 @@
 // jest.config.mjs
 export default {
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'node',
   roots: ['<rootDir>/boozle-backend/src'],
   collectCoverage: true,
@@ -10,4 +10,10 @@ export default {
   ],
   coverageDirectory: 'boozle-backend/coverage',
   modulePathIgnorePatterns: ['<rootDir>/boozle-backend/dist/'],
+  globals: {
+    'ts-jest': {
+      useESM: true
+    }
+  },
+  transformIgnorePatterns: ['node_modules/']
 };

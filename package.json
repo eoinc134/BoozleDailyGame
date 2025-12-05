@@ -11,7 +11,7 @@
     "prisma:migrate": "prisma migrate dev --name init",
     "copy:prisma": "mkdir -p boozle-backend/dist/generated && cpx \"boozle-backend/src/generated/**/*\" boozle-backend/dist/generated",
     "sonar": "sonar-scanner",
-    "test": "jest",
+    "test": "jest --config jest.config.mjs",
     "test:coverage": "jest --coverage --config jest.config.mjs"
   },
   "repository": {
