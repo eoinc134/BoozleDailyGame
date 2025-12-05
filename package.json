@@ -12,7 +12,7 @@
     "copy:prisma": "mkdir -p boozle-backend/dist/generated && cpx \"boozle-backend/src/generated/**/*\" boozle-backend/dist/generated",
     "sonar": "sonar-scanner",
     "test": "jest",
-    "test:coverage": "jest --coverage --config jest.config.js"
+    "test:coverage": "jest --coverage --config jest.config.mjs"
   },
   "repository": {
     "type": "git",
