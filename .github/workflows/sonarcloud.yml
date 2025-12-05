@@ -36,10 +36,10 @@ jobs:
           cd ..
 
       - name: Run Backend tests
-        run: npm test:coverage
+        run: npm run test:coverage
 
       - name: Run Frontend tests
         run: |
           cd boozle-frontend
-          npm test:coverage
+          npm run test:coverage
           cd ..
