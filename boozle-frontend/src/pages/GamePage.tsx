@@ -35,7 +35,7 @@ const GamePage: React.FC = () => {
         setComplete(hints > 3);
 
         if(gameComplete) {
-          handleGuessSubmit(cocktail.name)
+          handleGuessSubmit(parsedCocktail.name)
         }
       }
 
