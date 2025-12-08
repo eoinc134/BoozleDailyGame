@@ -72,7 +72,11 @@ const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit, onHintSubmit, ga
             renderInput={(params) => <TextField {...params} label=""/>} />
 
             <Button disabled={gameComplete} className="submit-guess-button" variant="contained" onClick={handleGuess}>Guess</Button>
-            <Button disabled={hintsUsed === 3 || gameComplete} className="submit-guess-button" variant="outlined" onClick={handleHint}>Hint ({3-hintsUsed})</Button>
+            { hintsUsed === 3 ? (
+                <Button disabled={hintsUsed === 3 || gameComplete} className="submit-guess-button" variant="outlined" onClick={handleHint}>Hint ({3-hintsUsed})</Button>
+            ) : (
+                <Button className="submit-guess-button" variant="outlined" onClick={handleHint}>Give Up?</Button>
+            ) }
         </div>
         </div>
     );
