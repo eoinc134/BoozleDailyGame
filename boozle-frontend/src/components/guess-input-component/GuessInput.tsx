@@ -6,10 +6,9 @@ import React from "react";
 interface GuessInputProps {
     onGuessSubmit: (guess: string) => void;
     onHintSubmit: (hintsUsed: number) => void;
-    gameComplete: boolean;
 }
 
-const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit, onHintSubmit, gameComplete }) => {
+const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit, onHintSubmit }) => {
     const [cocktailOptions, setCocktailOptions] = React.useState<string[]>([]);
     const [guessLabel, setGuessLabel] = React.useState<string>("Insert a drink to start");
     const [guessesMade, setGuessesMade] = React.useState<string[]>([]);
@@ -63,7 +62,6 @@ const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit, onHintSubmit, ga
         <div className="guess-input-container">
             <Autocomplete 
             className="guess-input"
-            disabled={gameComplete}
             value={selectedCocktail}
             options={cocktailOptions}
             onInputChange={handleInputChange}
@@ -71,9 +69,9 @@ const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit, onHintSubmit, ga
             getOptionDisabled={(option) => option === "Start typing..."}
             renderInput={(params) => <TextField {...params} label=""/>} />
 
-            <Button disabled={gameComplete} className="submit-guess-button" variant="contained" onClick={handleGuess}>Guess</Button>
+            <Button className="submit-guess-button" variant="contained" onClick={handleGuess}>Guess</Button>
             { hintsUsed < 3 ? (
-                <Button disabled={hintsUsed === 3 || gameComplete} className="submit-guess-button" variant="outlined" onClick={handleHint}>Hint ({3-hintsUsed})</Button>
+                <Button className="submit-guess-button" variant="outlined" onClick={handleHint}>Hint ({3-hintsUsed})</Button>
             ) : (
                 <Button className="submit-guess-button" variant="outlined" onClick={handleHint}>Give Up?</Button>
             ) }

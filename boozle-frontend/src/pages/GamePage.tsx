@@ -21,7 +21,9 @@ const GamePage: React.FC = () => {
 
       const handleGuessSubmit = async (guess: string) => {
         
-        setComplete(guess === parsedCocktail.name || hints > 3);
+        setComplete(guess === parsedCocktail.name);
+        setComplete(hints > 3);
+        console.log("🚀 ~ handleGuessSubmit ~ hints:", hints)
 
         // Fetch and set the guess for comparison
         const cocktailData = await searchCocktailByName(guess);
@@ -59,7 +61,7 @@ const GamePage: React.FC = () => {
       return (
         <div>
           {!gameComplete && (
-            <GuessInput onGuessSubmit={(value) => handleGuessSubmit(value)} onHintSubmit={(value) => handleHintUsed(value)} gameComplete={gameComplete} />
+            <GuessInput onGuessSubmit={(value) => handleGuessSubmit(value)} onHintSubmit={(value) => handleHintUsed(value)} />
           )}
 
           <ClueCard dailyCocktail={parsedCocktail} hintsUsed={hints} gameComplete={gameComplete} ></ClueCard>
