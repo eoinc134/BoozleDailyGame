@@ -11,7 +11,7 @@ type ClueCardProps = {
 
 const ClueCard: React.FC<ClueCardProps> = ({dailyCocktail, hintsUsed, gameComplete}) => {
     function getInstructions(): string[] {
-        if(gameComplete || hintsUsed > 2) {
+        if(gameComplete || hintsUsed >= 2) {
             return dailyCocktail.instructions.split('.').slice(0, -1)
         }
         return [""]
