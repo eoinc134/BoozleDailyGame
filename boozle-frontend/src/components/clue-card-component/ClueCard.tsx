@@ -49,7 +49,7 @@ const ClueCard: React.FC<ClueCardProps> = ({dailyCocktail, hintsUsed, gameComple
         {(hintsUsed > 0 || gameComplete) && (
             <div className="clue-card-container">
                 <div className="image-container" >
-                    {hintsUsed === 3 || gameComplete ? (
+                    {hintsUsed >= 3 || gameComplete ? (
                         <img src={dailyCocktail.imageUrl} width="150" height="150" style={{borderRadius: '1rem'}}></img>
                     ) : (
                         <Image style={{width: 150, height: 150}}/>

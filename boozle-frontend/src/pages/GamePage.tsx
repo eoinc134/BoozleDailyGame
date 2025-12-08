@@ -21,7 +21,7 @@ const GamePage: React.FC = () => {
 
       const handleGuessSubmit = async (guess: string) => {
         
-        setComplete(guess === parsedCocktail.name || hints === 4);
+        setComplete(guess === parsedCocktail.name || hints > 3);
 
         // Fetch and set the guess for comparison
         const cocktailData = await searchCocktailByName(guess);
