@@ -33,6 +33,10 @@ const GamePage: React.FC = () => {
       const handleHintUsed = (hints: number) => {
         setHints(hints);
         setComplete(hints > 3);
+
+        if(gameComplete) {
+          handleGuessSubmit(cocktail.name)
+        }
       }
 
       useEffect(() => {
