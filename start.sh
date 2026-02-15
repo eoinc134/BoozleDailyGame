@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export NODE_OPTIONS="--max-old-space-size=512"
+
 # === Start the Boozle Frontend Server ===
 echo "Building Boozle Frontend..."
 cd boozle-frontend
