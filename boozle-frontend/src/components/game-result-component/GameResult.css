@@ -1,0 +1,47 @@
+.game-result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    max-width: 480px;
+    background-color: #1E1E1E;
+    border-radius: 0.75rem;
+    border: 1px solid #3a3a3a;
+}
+
+.game-result-heading {
+    color: #ffffff !important;
+    font-weight: bold !important;
+    text-align: center;
+}
+
+.game-result-subtext {
+    color: #aaaaaa !important;
+    text-align: center;
+}
+
+.game-result-share-button {
+    margin-top: 0.25rem !important;
+}
+
+.game-result-countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #3a3a3a;
+    width: 100%;
+}
+
+.game-result-countdown-label {
+    color: #aaaaaa !important;
+}
+
+.game-result-timer {
+    color: #ffffff !important;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.1em;
+}
