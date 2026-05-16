@@ -4,7 +4,9 @@ export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export async function fetchDailyCocktail() {
     const response = await fetch(`${API_BASE_URL}/daily-cocktail`);
     if (!response.ok) {
-        throw new Error('Failed to fetch daily cocktail');
+        const error = new Error('Failed to fetch daily cocktail') as Error & { status: number };
+        error.status = response.status;
+        throw error;
     }
     return response.json();
 }

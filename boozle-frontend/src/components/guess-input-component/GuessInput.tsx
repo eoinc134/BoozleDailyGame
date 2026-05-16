@@ -12,7 +12,6 @@ const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit, onHintSubmit }) 
     const [cocktailOptions, setCocktailOptions] = React.useState<string[]>([]);
     const [guessLabel, setGuessLabel] = React.useState<string>("Insert a drink to start");
     const [guessesMade, setGuessesMade] = React.useState<string[]>([]);
-    const [numGuessesMade, setNumGuessesMade] = React.useState<number>(0);
     const [hintsUsed, setHintsUsed] = React.useState<number>(0);
     const [selectedCocktail, setSelectedCocktail] = React.useState<string>("");    
 
@@ -42,9 +41,8 @@ const GuessInput: React.FC<GuessInputProps> = ({ onGuessSubmit, onHintSubmit }) 
     const handleGuess = () => {
         if (!selectedCocktail) return;
 
-        setGuessesMade(prev => [...prev, selectedCocktail])
-        setNumGuessesMade(prev => prev + 1);
-        setGuessLabel(`Guess ${numGuessesMade + 1}`);
+        setGuessesMade(prev => [...prev, selectedCocktail]);
+        setGuessLabel(`Guess ${guessesMade.length + 1}`);
         onGuessSubmit(selectedCocktail);
 
         // Clear Autocomplete on submit

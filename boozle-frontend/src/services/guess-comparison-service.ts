@@ -7,8 +7,8 @@ export function evaluateGuess(dailyCocktail: Cocktail, guessedCocktail: Cocktail
             value: guessedCocktail.name,
             isCorrect: guessedCocktail.name === dailyCocktail.name
         },
-        ingredients: evaulatedGuessArray(dailyCocktail.ingredients, guessedCocktail.ingredients),
-        categories: evaulatedGuessArray(dailyCocktail.categories, guessedCocktail.categories),
+        ingredients: evaluatedGuessArray(dailyCocktail.ingredients, guessedCocktail.ingredients),
+        categories: evaluatedGuessArray(dailyCocktail.categories, guessedCocktail.categories),
         alcoholic: {
             value: guessedCocktail.isAlcoholic,
             isCorrect: guessedCocktail.isAlcoholic === dailyCocktail.isAlcoholic
@@ -22,7 +22,7 @@ export function evaluateGuess(dailyCocktail: Cocktail, guessedCocktail: Cocktail
      return evaluatedRow;
 }
 
-function evaulatedGuessArray(dailyArray: string[], guessArray: string[]): { value: string, isCorrect: boolean }[] {
+function evaluatedGuessArray(dailyArray: string[], guessArray: string[]): { value: string, isCorrect: boolean }[] {
     const results: {value: string; isCorrect: boolean}[] = [];
 
     for(const item of guessArray) {

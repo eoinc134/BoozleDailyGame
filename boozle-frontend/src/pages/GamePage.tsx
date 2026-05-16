@@ -10,31 +10,34 @@ import GuessComparison from "../components/guess-comparison-component/GuessCompa
 import type { Cocktail } from "../models/cocktail";
 import ClueCard from "../components/clue-card-component/ClueCard";
 
+type DailyCocktailResponse = {
+  id: string;
+  date: string;
+  cocktailData: string;
+};
+
 const GamePage: React.FC = () => {
-    //  eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const [cocktail, setCocktail] = useState<any>(null);
-      const [error] = useState<string | null>(null);
+      const [cocktail, setCocktail] = useState<DailyCocktailResponse | null>(null);
+      const [error, setError] = useState<string | null>(null);
       const [guess, setGuess] = useState<Cocktail>();
       const [hints, setHints] = useState<number>(0);
       const [gameComplete, setComplete] = useState<boolean>(false);
-    
+
 
       const handleGuessSubmit = async (guess: string) => {
-        
         setComplete(guess === parsedCocktail.name);
 
-        // Fetch and set the guess for comparison
         const cocktailData = await searchCocktailByName(guess);
-        const parsedData = parseCocktailData(JSON.stringify(cocktailData[0]));
+        const parsedData = parseCocktailData(cocktailData[0]);
 
         setGuess(parsedData);
       }
-      
+
       const handleHintUsed = (hints: number) => {
         setHints(hints);
         setComplete(hints > 3);
 
-        if(gameComplete) {
+        if(hints > 3) {
           handleGuessSubmit(parsedCocktail.name)
         }
       }
@@ -42,13 +45,16 @@ const GamePage: React.FC = () => {
       useEffect(() => {
         fetchDailyCocktail()
         .then(setCocktail)
-        .catch(async () => {
-          // If no cocktail exists, create a new one
-          const newCocktail = await fetchNewDailyCocktail();
-          setCocktail(newCocktail);
+        .catch(async (err: Error & { status?: number }) => {
+          if (err.status === 404) {
+            const newCocktail = await fetchNewDailyCocktail();
+            setCocktail(newCocktail);
+          } else {
+            setError(err.message);
+          }
         });
       }, []);
-      
+
       // Error and loading states
       if (error) {
         return <div>Error: {error}</div>;

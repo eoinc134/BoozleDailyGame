@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     }
 
     try {
-        const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + req.query.q);
+        const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + encodeURIComponent(query));
         const data = await response.json();
         res.json(data.drinks || []);
 

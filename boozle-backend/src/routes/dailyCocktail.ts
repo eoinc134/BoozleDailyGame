@@ -38,8 +38,11 @@ router.post('/fetch', async (req, res) => {
         today.setHours(0, 0, 0, 0); // Normalize to midnight
 
         // Check if today's cocktail already exists
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+
         const existingCocktail = await prisma.dailyCocktail.findFirst({
-            where: { date: today },
+            where: { date: { gte: today, lt: tomorrow } },
         });
         if (existingCocktail) {
             return res.status(200).json(existingCocktail);
@@ -48,7 +51,11 @@ router.post('/fetch', async (req, res) => {
         // Fetch a random cocktail from the external API
         const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
         const data = await response.json();
-        const cocktailData = data.drinks[0];
+        const cocktailData = data.drinks?.[0];
+        if (!cocktailData) {
+            res.status(502).json({ error: 'Failed to retrieve cocktail from external API' });
+            return;
+        }
 
         // Save to DB
         const newCocktail = await prisma.dailyCocktail.create({

@@ -1,8 +1,7 @@
 import type { Cocktail } from "../models/cocktail";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function parseCocktailData(cocktailData: any): Cocktail {
-    const data = JSON.parse(cocktailData);
+export function parseCocktailData(cocktailData: string | Record<string, unknown>): Cocktail {
+    const data = typeof cocktailData === "string" ? JSON.parse(cocktailData) : cocktailData;
 
     // Parse ingredients and measures
     const ingredients: string[] = [];

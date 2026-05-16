@@ -29,7 +29,7 @@ const ClueCard: React.FC<ClueCardProps> = ({dailyCocktail, hintsUsed, gameComple
         for (const char of dailyCocktail.name) {
             if(/[a-zA-Z]/.test(char)) {
                 if(newWord) {
-                    result += "\n";
+                    if(result) result += "\n";
                     result += char;
                     newWord = false
                 } else {
